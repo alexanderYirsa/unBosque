@@ -83,5 +83,46 @@ public class ClienteDao {
 		}
 		return nombreArrayList;	 
 	}
+	
+	//Consultar cliente por cédula
+	public ArrayList<Clientes> consultarEstudiante(int cedula) {
+		ArrayList<Clientes> nombreArrayList = new ArrayList<Clientes>();
+		int ced = cedula;
+		String nombres = "";
+		String direccion = ""; 
+		String correo = "";
+		String telefono = "";
+		ResultSet rs = null;
+		int contador = 0;
+		String consultaSql = "SELECT * FROM clientes  WHERE cedula_cliente = ?";	
+		try {
+			
+			PreparedStatement inst = con.conectar().prepareStatement(consultaSql);	  
+			inst.setInt(1, ced);
+			rs = inst.executeQuery();
+			
+			while(rs.next()==true){
+				contador = contador + 1;
+				ced = rs.getInt(1);
+				nombres = rs.getString(2);
+				direccion =  rs.getString(3);
+				correo = rs.getString(4);
+				telefono = rs.getString(5);
+				nombreArrayList.add(new Clientes(ced, nombres, direccion, correo, telefono));
+
+			}
+			rs.close();
+			if(contador==0) {
+				System.out.println("El cliente no se encuentra registrado en el sistema \n");
+			}
+			
+		} catch(SQLException e){
+			System.out.println(e);
+		}
+		catch (Exception ex){
+			System.out.println(ex.toString());
+		} 
+		return nombreArrayList;
+	}
 
 }
