@@ -19,7 +19,7 @@ public class Conexion {
 			System.out.println("Error al cargar el controlador"); 
 			e.printStackTrace();
 		}
-	}
+	}//Comentariio
 	
 	public Connection conectar() {
 		
