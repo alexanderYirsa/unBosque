@@ -84,7 +84,7 @@ public class ClienteDao {
 		return nombreArrayList;	 
 	}
 	
-	//Consultar cliente por cédula
+	//Consultar si cliente existe por cédula
 	public ArrayList<Clientes> consultarEstudiante(int cedula) {
 		ArrayList<Clientes> nombreArrayList = new ArrayList<Clientes>();
 		int ced = cedula;
@@ -123,6 +123,31 @@ public class ClienteDao {
 			System.out.println(ex.toString());
 		} 
 		return nombreArrayList;
+	}
+	
+	//Consulta un cliente ya creado por cédula y devuelve cantidad
+	public int consultarCliente(int ced) {
+		int cedula = ced;
+		ResultSet rs = null;
+		int contador = 0;
+		String consultaSql = "SELECT * FROM clientes  WHERE cedula_cliente = ?";	
+		try {
+			
+			PreparedStatement inst = con.conectar().prepareStatement(consultaSql);	  
+			inst.setInt(1, cedula);
+			rs = inst.executeQuery();
+			
+			while(rs.next()==true){
+				contador = contador + 1;
+			}
+			rs.close();
+		} catch(SQLException e){
+			System.out.println(e);
+		}
+		catch (Exception ex){
+			System.out.println(ex.toString());
+		}
+		return contador; 
 	}
 
 }
