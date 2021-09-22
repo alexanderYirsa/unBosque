@@ -1,7 +1,9 @@
 package modelo;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import conexion.Conexion;
 import entidad.Clientes;
@@ -16,7 +18,7 @@ public class ClienteDao {
 		this.con = new Conexion();
 		this.cli = new Clientes();
 	}
-	
+	//Crear Cliente
 	public void crearCliente(Clientes unCliente) {
 		int cedula = unCliente.getCedula();
 		String nombres = unCliente.getNombres();
@@ -42,6 +44,44 @@ public class ClienteDao {
 			System.out.println(ex.toString());
 		} 
 
+	}
+	
+	//Listar Clientes
+	public ArrayList<Clientes> listarClientes() {
+		String strConsulta = "SELECT * FROM clientes";
+		ArrayList<Clientes> nombreArrayList = new ArrayList<Clientes>();
+		int registros = 0;
+		try {
+			PreparedStatement pstm = con.conectar().prepareStatement(strConsulta);
+			ResultSet res = pstm.executeQuery();
+
+			int cedula = 0;
+			String nombres = "";
+			String direccion = ""; 
+			String correo = "";
+			String telefono = "";
+
+			int i = 0;
+			while(res.next()){
+				cedula = res.getInt("cedula_cliente");
+				nombres = res.getString("nombre_cliente");
+				direccion = res.getString("direccion_cliente");
+				correo = res.getString("email_cliente");
+				telefono = res.getString("telefono_cliente");
+				i++;
+				nombreArrayList.add(new Clientes(cedula, nombres, direccion, correo, telefono));	 
+			}
+			res.close();
+
+
+		}catch(SQLException e){
+			System.out.println(e);
+		}
+
+		catch (Exception ex){
+			System.out.println(ex.toString());
+		}
+		return nombreArrayList;	 
 	}
 
 }
