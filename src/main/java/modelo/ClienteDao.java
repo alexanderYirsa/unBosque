@@ -149,5 +149,29 @@ public class ClienteDao {
 		}
 		return contador; 
 	}
+	
+	//Modificar Cliente
+	public void modificarCliente(int cedu, String nombres, String direccion, String telefono, String email) {
+		
+		String actualizaSql = "UPDATE clientea SET nombre_cliente =?,direccion_cliente=?,telefono_cliente=?,email_cliente=? WHERE cedula_cliente = ?";		
+		try {
+			PreparedStatement inst = con.conectar().prepareStatement(actualizaSql);
+			inst.setInt(5, cedu);
+			inst.setString(1, nombres);
+			inst.setString(2, direccion);
+			inst.setString(3, telefono);
+			inst.setString(4, email);
+			inst.executeUpdate();
+
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+
+		catch (Exception ex){
+			System.out.println(ex.toString());
+		} 
+
+	}
 
 }
