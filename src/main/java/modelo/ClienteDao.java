@@ -173,5 +173,25 @@ public class ClienteDao {
 		} 
 
 	}
+	
+	//Eliminar un cliente
+	public void borrarCliente(int cedu) {
+		int cedula = cedu;
+		String borraSql = "DELETE FROM clientes WHERE cedula_cliente = ?";
+		try {
+			PreparedStatement inst = con.conectar().prepareStatement(borraSql);	  
+			inst.setInt(1, cedula);	
+			inst.executeUpdate();
+
+		}
+		catch(SQLException e){
+			System.out.println(e);
+		}
+
+		catch (Exception ex){
+			System.out.println(ex.toString());
+		} 
+
+	}
 
 }
