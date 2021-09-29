@@ -1,4 +1,4 @@
-package co.edu.co.unbosque.model;
+package modelo;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import Config.Conexion;
+import entidad.Usuario;
+import conexion.Conexion;
 
 
 public class UsuarioDAO {
