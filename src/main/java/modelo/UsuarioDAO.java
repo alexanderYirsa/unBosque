@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import conexion.Conexion;
 import entidad.Usuario;
+import conexion.Conexion;
+
 
 
 public class UsuarioDAO {
