@@ -6,7 +6,7 @@
     	<meta name="keywords" content="usuario"/>
 
     <title>Bienvenidos a la Tienda Genérica</title>
-    <link rel="stylesheet" href="estilos.css">
+    <link rel="stylesheet" href="estilos_login.css">
     </head>
     
 	<body>
