@@ -10,6 +10,7 @@ import entidad.Usuario;
 import conexion.Conexion;
 
 
+
 public class UsuarioDAO {
 	
 	private static final String SQL_SELECT="SELECT cedula,nombres,email,usuario,password from usuarios";
@@ -17,16 +18,20 @@ public class UsuarioDAO {
 	private static final String SQL_INSERT="INSERT INTO usuarios(cedula,nombres,email,usuario,password) VALUES(?,?,?,?,?)";
 	private static final String SQL_UPDATE="UPDATE usuarios SET nombres=?, email=?, usuario=?, password=? WHERE cedula=?";
 	private static final String SQL_DELETE="DELETE FROM usuarios WHERE cedula=?";
+	private Conexion con;
 	
-	public List<Usuario> listarUsuarios(){
-		Connection conn=null;
+	public UsuarioDAO() {
+		this.con=new Conexion();
+	}
+	public List<Usuario> (){
+//		Connection conn=null;
 		PreparedStatement stmt=null;
 		ResultSet rs=null;
 		List<Usuario> usuarios=new ArrayList<Usuario>();
 		
 		try {
-			conn=Conexion.getConexion();
-			stmt=conn.prepareStatement(SQL_SELECT);
+			con=Conexion.conectar();
+			stmt=con.prepareStatement(SQL_SELECT);
 			rs=stmt.executeQuery();
 			
 			while(rs.next()) {
