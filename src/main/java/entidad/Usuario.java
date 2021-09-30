@@ -1,4 +1,4 @@
-package co.edu.co.unbosque.model;
+package entidad;
 
 public class Usuario {
 	
