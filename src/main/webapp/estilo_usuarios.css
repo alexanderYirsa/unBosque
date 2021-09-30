@@ -1,0 +1,51 @@
+
+
+.tienda{
+	background: #20BCBE;
+	padding: 1px;
+	font-family: 'calibri';
+	color: black;
+	
+}
+
+nav{
+	font-family: 'calibri';
+	text-decoration: none;
+	
+}
+
+.formulario{
+	background: #F3FAFA;
+	width: 450px;
+	padding: 30px;
+	margin: auto;
+	margin-top: 50px;
+	border-radius: 4px;
+	font-family: 'calibri';
+}
+
+.campos{
+	width: 100%;
+	padding: 10px;
+	border-radius: 4px;
+	margin-bottom: 16px;
+	border: 1px solid #20BCBE;
+	font-family: 'calibri';
+	font-size: 18px;
+	
+}
+
+.botones{
+	width: 96px;
+	background:#17984C;
+	border: 1px solid #5367FC;
+	padding: 12px;
+	color: white;
+	margin: 3px;
+	font-size: 18px;
+	font-family: 'calibri';
+	
+	
+	
+	
+}
