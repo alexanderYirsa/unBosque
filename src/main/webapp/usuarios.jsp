@@ -5,7 +5,7 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Usuarios</title>
-<link rel="stylesheet" href="estilo_usuarios.css">
+<link rel="stylesheet" href="css/estilo_usuarios.css">
 </head>
 <div class="tienda">
 
